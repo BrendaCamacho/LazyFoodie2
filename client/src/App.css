@@ -1,0 +1,376 @@
+:root{
+  --claro:#1de9b6;
+  --verde: #00897b;
+  --amarillo: #ffcc24;
+  --amarilloDarker:#ffab00;
+  --lighten:#ffe082;
+
+}
+nav{
+  background-color:transparent!important;
+}
+nav ul a{
+  color:#1de9b6;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+
+}
+body{
+  background-color: rgb(11, 20, 0);
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  background-image: url(../src/img/4back790682821.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.container {
+  min-height: 100%;
+  margin-bottom: -30px;
+}
+
+
+.logo{
+  text-align: center;
+}
+
+#logo{
+  margin:1em auto 2em 25em;
+  width:25%;
+}
+
+/* ===== SEARCH BAR INGREDIENTES ===== */
+
+input{
+  color:white!important;
+  font-size: 16px;
+}
+
+.formContainer, .input-field{
+  display:flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-bottom: 1em;
+  margin-right: 5em;
+} 
+
+
+#watchers{
+  color:white;
+  font-size: 1em;
+
+}
+.input-field label{
+color: var(--amarillo);
+}
+
+.input-field input[type=text]{
+  border-bottom: 1px solid var(--amarillo);
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid var(--claro)!important;
+}
+
+.input-field input[type=text]:focus + label {
+  color: var(--claro)!important;
+}
+
+
+#addIngredients{
+background-color: var(--amarillo);
+color:white;
+border: 1px solid var(--amarillo);
+border-radius: 6px;
+height: 30px;
+line-height: 30px;
+padding:0 6px;
+text-transform: none;
+margin-left: 20em;
+margin-top: 1em;
+}
+
+/*@media screen and (max-width:540px){
+  .childFlexSearch{
+      flex-basis: 0;
+     flex-grow:1;
+     width:100%;
+  }
+}*/
+
+#addIngredients:hover{
+  background-color: var(--amarilloDarker);
+  border: 1px solid var(--amarilloDarker);
+  transition: ease-in-out 0.3s;
+}
+
+#addIngredients:active{
+  color:white;
+  background-color:var(--verde);
+  border: 1px solid var(--verde);
+  transition: ease-in-out 0.3s;
+}
+
+/*===== PHRASE ADVICE/RECIPE FOR LIFE ===== */
+
+.phrase{
+  width:100%;
+  justify-content: center;
+  margin-bottom:1em;
+}
+
+.textPhrase{
+  text-align: center;    
+  color:var(--lighten);
+  flex:0 1 auto;
+  font-style: italic;
+  opacity: 0.9;
+  letter-spacing: 1px;
+  font-size: .85em;
+  text-shadow: 1px 1px 1px black ;
+
+}
+
+.textPhrase:before {
+  content: open-quote;
+  display: inline;
+  left: -5px;
+  position: relative;
+  top: 9px;
+  font-size: 2.5em;
+  line-height: .75;
+  height:0;
+  color: var(--claro);
+  opacity: 0.8;
+}
+.textPhrase::after {
+  line-height: .75;
+  height:0;
+  content: close-quote;
+  display: inline;
+  left: -5px;
+  position: relative;
+  top: 9px;
+  color: var(--claro);
+  opacity: 0.8;
+  font-size: 2.5em;
+}
+
+
+/*===== ROW 3 CHIPS ===== */
+
+.chipsRow{
+  display:flex;
+  justify-content: center;
+  font-weight: 400;
+  margin-bottom: 2.5em;
+  margin-right: 5em;
+}
+
+.chip{
+  background-color: var(--claro);
+  color:var(--verde);
+  height: 25px;
+  font-size: 12px;
+  line-height: 25px;
+  border-radius: 6px;
+  margin-left: 7em;
+}
+
+.chip .close{
+  line-height: 28px;
+  font-size: 14px;
+  padding-left: 10px;
+  text-shadow: none;
+  color: var(--verde);
+  opacity:0.8;
+}
+
+/* ===== CARDS RECIPES ===== */
+
+.card{
+  background-color:var(--verde);
+  padding:1px!important;
+  margin:1em;
+}
+
+
+.card .card-content{
+  padding:10px;
+
+}
+
+.card .card-content .card-title{
+  color: var(--amarillo);
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-content{
+  width:100%;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+}
+
+.cardTitle{
+  width:100%;
+  clear: both;
+  margin-bottom: 6px;
+}
+
+.flexTitle {
+  width: 70%;
+  float: left;
+}
+
+.card .card-content p{
+  text-align: left;
+  color:white;
+  font-weight: 200;
+  font-size: 0.9em;
+}
+
+.card .card-content p i{
+  color:var(--claro);
+  margin-right: 3px;
+  font-weight: 200;
+}
+
+.card .card-reveal{
+  padding:16px 12px;
+}
+
+.card-reveal .card-title{
+  color: var(--verde);
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+}
+
+.yields{
+  font-size: 0.9em;
+  padding-bottom: 0.5em;
+  text-align: left;
+  width: 100%;
+  float: left;
+  color:var(--verde);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--amarillo);
+}
+
+.card-reveal .card-title i{
+  color:var(--amarillo);
+}
+
+.btn-small{
+  background-color:var(--amarillo);
+  margin-top: 1em;
+  opacity: 1!important;
+  color:var(--verde)!important;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 16px;
+}
+.btn-small:hover{
+  background-color: var(--claro);
+}
+
+
+ul{
+  list-style-type:disc!important;
+  clear: both;
+}
+
+ul li {
+  list-style-type: disc!important;
+  margin-left:18px;
+  color: gray;
+  font-size: 16px;
+}
+
+a:link{
+  text-decoration: none;
+}
+
+/* ===== VISITAS ======*/
+
+.visitas{
+  text-align: center;
+  color:var(--claro);
+  letter-spacing: 2px;
+  font-weight: 400;
+  bottom: 0;
+  font-size: .6em;
+  border-top:1px solid var(--amarillo);
+  bottom:0;
+  opacity: 0.5;
+  padding:3px 0 0 0;
+  margin-bottom: 0;
+}
+
+.footer{
+  padding:0;
+  margin:4em 0 0 0;
+}
+
+.no-results{
+  margin:-2em auto;
+  width:90%;
+  text-align: center;
+  padding:0 0.5em;
+  font-weight: 400;
+  color:rgba(201, 201, 201, 0.979);
+}
+
+.no-results:before{
+  content: ". . .";
+  color:rgba(202, 202, 202, 0.979);
+  margin-bottom: 1em;
+  font-size: 2.5em;
+  margin-top: -3em;
+
+}
+
+.sad-face{
+  display:block;
+  margin-top: 1em;
+}
+
+/* Make footer sticky*/
+
+
+/* ===== MEDIA QUERIES ===== */
+
+@media only screen and (max-width: 767px) {
+  body {
+      background-image: url(../src/img/mobile-back.jpg);
+  }
+  #logo{
+      margin:3em auto;
+      width:40%;
+  }
+  .container{
+      width:100%;
+      padding-right: 10px;
+      padding-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 993px){
+
+  .container {
+      width: 80%;
+  
+    }
+  }
