@@ -1,36 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import './navbar.css'
 
-
-function Nav() {
-    return (
-        
-
-
-    <nav>
-
-            <ul id="nav-mobile" className="right">
+class Landing extends React.Component {
+    logOut(e) {
+        e.preventDefault()
+        localStorage.removeItem('usertoken')
+        this.props.history.push(`/`)
+    }
+    render() {
+        const loginRegLink = (
+            <React.Fragment>
                 <li>
-                    <Link to="/" >
-                        Search
+                    <Link to="/login" className="nav-link">
+                        Login
                     </Link>
                 </li>
                 <li>
-                    <Link to="/saved">
-                        Saved
+                    <Link to="/register" className="nav-link" id="register">
+                        Register
                     </Link>
                 </li>
+            </React.Fragment>
+
+        )
+        const userLink = (
+            <React.Fragment>
                 <li>
-                    <Link to="/LogIn">
-                        Log In
-                    </Link>
+                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                        Logout
+                    </a>
                 </li>
-             </ul>
-    </nav>
-
-    
-
-
-    );
+            </React.Fragment>
+        )
+        return (
+            <nav>
+                <ul className="right">
+                    <li>
+                        <Link to="/" className="nav-link">
+                            Search
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/saved" className="nav-link">
+                            Saved
+                        </Link>
+                    </li>
+                    {localStorage.usertoken ? userLink : loginRegLink}
+                </ul>
+            </nav>
+        )
+    }
 }
-export default Nav;
+export default withRouter(Landing)
