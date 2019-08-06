@@ -2,7 +2,9 @@ import React, { Component } from "react";
 // import Search from "../components/Search";
 import SearchInput from "../components/SearchInput"
 import API from "../utils/API.js";
+import Chips from "../components/Chips"
 import Logo from "../components/Logo"
+import ResultsContainer from "../components/ResultsContainer"
 
 
 
@@ -39,8 +41,11 @@ class SearchPage extends Component {
         .catch(err=> console.log(err));
     }
 
+
     searchClick = e =>{
         e.preventDefault();
+
+
         this.setState(state => {
             const searchChip2 = this.state.searchChip.concat(state.search);
 
@@ -50,9 +55,12 @@ class SearchPage extends Component {
                 search: ""
             };
 
-        },  this.search)
+
+        },  this.search ) 
+
         
     };
+
  
     render() {
         return (
@@ -70,21 +78,25 @@ class SearchPage extends Component {
             value={this.state.search}
             onChange={this.onChange} 
             onClick={this.searchClick}/>
-            {/* // <ResultsContainer bookData={this.state.results} path={this.props.match.path}/ */}
                 
+            </div>
+            </div>
 
-                    </div>
-                    {/* <Chips /> */}
-                      </div>
-                    <div>
-                    </div>
+
             
-                    
-                    {/* <ResultsContainer
-                    recipesInfo = {this.state.results}
-                    /> */}
+                    <Chips
+                    chipsName = {this.state.searchChip}
+                     />
+            
+              <div className="row">
+
+                    <ResultsContainer
+                    recipesData = {this.state.results}/>
+             </div>
 
             </div>
+            
+
 
             
         )

@@ -1,38 +1,40 @@
 
-import React from 'react';
-import SearchInput from "../SearchInput"
-import SearchButton from "../SearchButton"
+import React, {Component} from 'react';
 
 
-class Chips extends React.Component {
+class Chips extends Component {
 
-render() {
-    if  (SearchButton.searchClick === true){
-      if(SearchInput.value.lenght > 0){
+
+    render() {
+        return(
+
+            <div className="row chipsRow col m8 l6">
+
+    {this.props.chipsName.map((searchChip) => {
             return(
-            <h1>HOLA</h1>
-            )
+                <div className="chip" data-name={searchChip}>
+                {searchChip}
 
-        }
-    }
+                <i className="close material-icons">
+                    close
+                </i> 
+                </div>
+                
+               
+            )})
+
+
+    };
+          </div>
+                
+
+
+        
+
+        )
 }
-
-
-        // return(
-
-        //     // <div className="chip" data-name={this.props.SearchInput}>
-
-        //         <h1>HOLA</h1>
-        //         /* </div>i className="close material-icons" >close< /i> */
-        //     // </div>
-        // )
-    
-
-
-
 }
 
     
 
     export default Chips;
-    

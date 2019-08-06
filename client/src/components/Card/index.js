@@ -12,7 +12,7 @@ class Card extends React.Component {
         this.state = {
             saved: false,
             deleted:false,
-            recipes: []
+            results: []
          }
 
          this.saveClick = this.saveClick.bind(this);
@@ -23,13 +23,13 @@ class Card extends React.Component {
      saveClick = function(e){
         this.setState({saved:true});
         const recipesData = {
-            img: this.props.img,
-            title: this.props.title,
-            timer: this.props.timer,
+            image: this.props.image,
+            label: this.props.label,
+            totalTime: this.props.totalTime,
             calories: this.props.calories,
-            yields: this.props.yields,
-            link: this.props.link,
-            description: this.props.description
+            yield: this.props.yield,
+            url: this.props.url,
+            ingredientsLines: this.props.ingredientsLines
         }
         e.preventDefault();
         API.saveRecipe(recipesData)
@@ -63,15 +63,14 @@ class Card extends React.Component {
     };
     render () {
         return  (
-            <div className="recipesContainer col s12">
                 <div className="cardContainer col s12 m6 l4 xl3">
                     <div className="card sticky-action col s12">
                         <div className="card-image waves-effect waves-block waves-light">
-                                <img className="activator" src="{this.props.img}"></img>
+                                <img className="activator" src={this.props.image}></img>
                         </div>
                     <div className="card-content">
                         <div className="cardTitle">
-                            <div className="card-title activator truncate flexTitle">{this.props.title}</div>
+                            <div className="card-title activator truncate flexTitle">{this.props.label}</div>
                             <div className = "card-title activator">
                                 <i className= "material-icons small right">add_circle</i>
                             </div>
@@ -79,13 +78,13 @@ class Card extends React.Component {
                         </div>
                         <div className="cardText">
                             <p>
-                            {this.props.timer}
+                            {this.props.totalTime}
                             <i className="material-icons left">timer</i>
                             </p>
                         </div>
                         <div className="cardText">
                             <p>
-                            {this.props.calories}
+                            {this.props.calories.toFixed()}
                             <i className="material-icons left">mood</i>
                             </p>
                         </div>
@@ -93,22 +92,33 @@ class Card extends React.Component {
 
                     <div className="card-reveal" >
                         <div className="card-title flexTitle truncate">
-                        {this.props.title}
+                        {this.props.label}
                         </div>
                         <div className="card-title">
-                            <i className="material-icons small right">close</i>
+
+                        <i className="material-icons small right">close</i>
+
                         </div>
-                        <p className="yields">{this.props.yields}</p>
-                        
+                        <p className="yields"> Servings {this.props.yield} </p>
+
+
                         <ul>
-                            {this.props.description}
+
+                            {this.props.ingredientLines.map((results) => {
+                                return (
+                                <li>{results}</li>
+                                )
+                            }
+                            )
+                        }
+                        </ul>
                             {/* <li>2 1/2 cups grappa or unflavored vodka</li>
                             <li>2 cups whole milk</li>
                             <li>2 cups sugar</li>
                             <li>2 ounces bittersweet chocolate (preferably 70%), grated</li>
                             <li>1/2 lemon, seeded and chopped, with rind</li> */}
-                        </ul>
-                        <a className="waves-effect waves-light btn-small" href="{this.props.link}" target="_blank">Full Recipe<i className="material-icons right">add</i></a>
+                        
+                        <a className="waves-effect waves-light btn-small" href={this.props.url} target="_blank">Full Recipe<i className="material-icons right">add</i></a>
                         {
                                 // if this.props.path is "/" display save button else display Delete button
                                 (this.props.path === "/saved")? 
@@ -122,7 +132,6 @@ class Card extends React.Component {
 
 
                     </div>
-                </div>
         
             
         
@@ -140,3 +149,7 @@ class Card extends React.Component {
 
 
 export default Card;
+
+
+
+

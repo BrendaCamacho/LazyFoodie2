@@ -180,7 +180,8 @@ margin-top: 1em;
   font-size: 12px;
   line-height: 25px;
   border-radius: 6px;
-  margin-left: 7em;
+  margin-left: 5em;
+  margin-right:-3em;
 }
 
 .chip .close{
