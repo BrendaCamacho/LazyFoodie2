@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 const RecipeSchema = new Schema ({
 
     label: String,
-    img: String, 
-    time: String,
+    image: String, 
+    totalTime: String,
     calories:String,
-    servings:String,
-    ingredientes:[String],
+    yield:String,
+    url: String,
+    ingredientsLines:[String],
     date :{
         type: Date,
         default: Date.now

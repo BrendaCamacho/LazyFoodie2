@@ -1,12 +1,24 @@
 const axios = require("axios");
-const db = require("../models/Recipes");
+const Recipe = require("../models/Recipes");
 const path = require("path");
 
 module.exports = function(app){
     app.post("/api/recipes", (req, res) => {
-        db.Recipe.create(req.body).then(
+        Recipe.create(req.body).then(
             (response) => {
                 res.json({successful: response});
+            }
+        ).catch(
+            (err) => {
+                res.json({error:err});
+            }
+        );
+    });
+
+    app.get("/api/recipes", (req, res) => {
+        Recipe.find().then(
+        (recipesData) => {
+            res.json(recipesData);
             }
         ).catch(
             (err) => {

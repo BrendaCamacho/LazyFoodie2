@@ -32,6 +32,7 @@ class Card extends React.Component {
             ingredientsLines: this.props.ingredientsLines
         }
         e.preventDefault();
+        console.log(recipesData);
         API.saveRecipe(recipesData)
         .then(
             (response) => {
