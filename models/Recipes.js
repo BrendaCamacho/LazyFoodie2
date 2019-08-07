@@ -5,8 +5,8 @@ const RecipeSchema = new Schema ({
 
     label: String,
     image: String, 
-    totalTime: String,
-    calories:String,
+    totalTime: Number,
+    calories:Number,
     yield:String,
     url: String,
     ingredientsLines:[String],

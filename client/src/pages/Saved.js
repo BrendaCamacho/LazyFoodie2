@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import ResultsContainer from "../components/ResultsContainer";
 import API from "../utils/API";
+import Logo from "../components/Logo";
 
-class Saved extends Component {
+class Saved extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,11 +11,30 @@ class Saved extends Component {
         }
     }
 
+    componentWillMount(){
+        API.getRecipes().then(
+            (response) => {
+                this.setState({savedRecipes:response.data})
+                console.log(response);
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
     render() {
+        console.log(this.state.savedRecipes)
         return (
             <div className="container">
+            <div className = "row">
+                <div className = "logodiv col s12 m4">
+                    <Logo/>
+                </div>
+            </div>
                 <div className="row">
-                <ResultsContainer savedRecipes = {this.savedRecipes} path = {this.props.match.path}/>
+                <ResultsContainer savedRecipes = {this.state.savedRecipes} path = {this.props.match.path}/>
                 </div>
             </div>
         )

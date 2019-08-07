@@ -33,6 +33,25 @@ function ResultsContainer (props){
                         <div></div>
                     )
                 } {/* Cierra else de if results >0 */}
+    }else if(props.path === "/saved"){
+        return(
+            <div class="recipesContainer col s12">
+                
+                        {props.savedRecipes.map((recipe) => {
+                            return <Card 
+                            image = {recipe.image}
+                            label = {recipe.label}
+                            totalTime =  {recipe.totalTime}
+                            calories = {recipe.calories}
+                            yield = {recipe.yield}
+                            url = {recipe.url}
+                            ingredientLines  = {recipe.ingredientsLines}
+                            id = {recipe._id}
+                            key = {recipe._id}
+                            />
+                        })}
+                </div>
+        )
     }
 
 
