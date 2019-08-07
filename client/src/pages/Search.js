@@ -91,7 +91,7 @@ class SearchPage extends Component {
               <div className="row">
 
                     <ResultsContainer
-                    recipesData = {this.state.results}/>
+                    recipesData = {this.state.results} path={this.props.match.path}/>
              </div>
 
             </div>
