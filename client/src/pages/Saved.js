@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Saved from "../components/Saved";
 import ResultsContainer from "../components/ResultsContainer";
+import API from "../utils/API";
 
 class Saved extends Component {
     constructor(props) {
@@ -21,4 +21,4 @@ class Saved extends Component {
     }
 }
 
-export default SavedPage;
+export default Saved;
