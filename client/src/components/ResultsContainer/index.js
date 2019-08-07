@@ -4,38 +4,50 @@ import Card from "../Card";
 
 function ResultsContainer (props){
 
-    // if  (props.path ==="/"){
-    //     if(props.recipesData.length > 0){
+    if  (props.path ==="/"){
+         if(props.recipesData.length > 0){
 
         return (
             <div class="recipesContainer col s12">
 
+                {props.recipesData.map((results) => {
+                    const recipesInfo  = results.recipe
+                    return <Card 
+                    image = {recipesInfo.image}
+                    label = {recipesInfo.label}
+                    totalTime =  {recipesInfo.totalTime}
+                    calories = {recipesInfo.calories}
+                    yield = {recipesInfo.yield}
+                    url = {recipesInfo.url}
+                    ingredientLines  = {recipesInfo.ingredientLines}
+                    />
+                })}
 
-            {props.recipesData.map((results) => {
-                const recipesInfo  = results.recipe
+            </div>
+
+        )
+
+        }            
+    }else if(props.path === "/saved"){
+        return(
+            <div class="recipesContainer col s12">
+
+            {props.savedRecipes.map((recipe) => {
                 return <Card 
-                image = {recipesInfo.image}
-                label = {recipesInfo.label}
-                totalTime =  {recipesInfo.totalTime}
-                calories = {recipesInfo.calories}
-                yield = {recipesInfo.yield}
-                url = {recipesInfo.url}
-                ingredientLines  = {recipesInfo.ingredientLines}
-
-                />
+                image = {recipe.image}
+                label = {recipe.label}
+                totalTime =  {recipe.totalTime}
+                calories = {recipe.calories}
+                yield = {recipe.yield}
+                url = {recipe.url}
+                ingredientLines  = {recipe.ingredientLines}
+                key = {recipe._id}
+                id = {recipe._id}/>
             })}
 
-                </div>
+        </div>
         )
+    }
 }
-        
-
-
-        
-        
-
-            
-//     }
-// }
 
 export default ResultsContainer;
