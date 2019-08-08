@@ -17,17 +17,21 @@ function SearchInput(props){
 
             />
 
-                    <button 
-                    onClick= {props.onClick}
-                    className="btn waves-effect waves-light childFlexSearch" 
-                    id="addIngredients" 
-                    type="submit"
-                    name="action">
-        
-                    Add
-                     <i className="material-icons right">add</i>
-                    </button>                
-            </form>
+            <button 
+            onClick= {props.onClick}
+            className="btn waves-effect waves-light childFlexSearch" 
+            id="addIngredients" 
+            type="submit"
+            name="action">
+
+            Add
+             <i className="material-icons right">add</i>
+            </button>                
+   
+   
+           
+           
+             </form>
 
 
     );

@@ -29,7 +29,13 @@ class Card extends React.Component {
             calories: this.props.calories,
             yield: this.props.yield,
             url: this.props.url,
+<<<<<<< HEAD
             ingredientsLines: this.props.ingredientsLines
+=======
+
+            ingredientLines: this.props.ingredientLines
+
+>>>>>>> d634cbd92dabbd72d69d43c82697f39fe5b52216
         }
         e.preventDefault();
         API.saveRecipe(recipesData)
@@ -100,23 +106,17 @@ class Card extends React.Component {
 
                         </div>
                         <p className="yields"> Servings {this.props.yield} </p>
-
-
+       
                         <ul>
 
-                            {this.props.ingredientLines.map((results) => {
+                            {this.props.ingredientLines.map((i) => {
                                 return (
-                                <li>{results}</li>
-                                )
-                            }
-                            )
-                        }
+
+                                <li> {i} </li>
+                                )})
+                           }
                         </ul>
-                            {/* <li>2 1/2 cups grappa or unflavored vodka</li>
-                            <li>2 cups whole milk</li>
-                            <li>2 cups sugar</li>
-                            <li>2 ounces bittersweet chocolate (preferably 70%), grated</li>
-                            <li>1/2 lemon, seeded and chopped, with rind</li> */}
+                         
                         
                         <a className="waves-effect waves-light btn-small" href={this.props.url} target="_blank">Full Recipe<i className="material-icons right">add</i></a>
                         {
