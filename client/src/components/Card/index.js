@@ -29,13 +29,9 @@ class Card extends React.Component {
             calories: this.props.calories,
             yield: this.props.yield,
             url: this.props.url,
-<<<<<<< HEAD
-            ingredientsLines: this.props.ingredientsLines
-=======
 
             ingredientLines: this.props.ingredientLines
 
->>>>>>> d634cbd92dabbd72d69d43c82697f39fe5b52216
         }
         e.preventDefault();
         API.saveRecipe(recipesData)
