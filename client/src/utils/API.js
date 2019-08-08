@@ -20,6 +20,10 @@ export default {
 
     getRecipes: () => {
         return axios.get("/api/recipes");
+    },
+
+    deleteRecipe:(id) =>{
+        return axios.delete("/api/recipes/" + id);
     }
 }
 
