@@ -289,14 +289,15 @@ margin-top: 1em;
 
 
 ul{
-  list-style-type:disc!important;
   clear: both;
+
 }
 
 ul li {
-  list-style-type: disc!important;
+  list-style-type:disc !important;
+
   margin-left:18px;
-  color: gray;
+  color: rgb(19, 18, 18);
   font-size: 16px;
 }
 
@@ -304,6 +305,13 @@ a:link{
   text-decoration: none;
 }
 
+
+li {
+  display: list-item;
+
+
+  display: block!important;
+}
 /* ===== VISITAS ======*/
 
 .visitas{
