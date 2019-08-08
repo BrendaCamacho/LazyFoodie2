@@ -21,6 +21,7 @@ class SearchPage extends Component {
         results:[],
         search: "",
         searchQuery:"",
+        deleteChip: "",
         searchChip: [],
     };
   
@@ -35,6 +36,7 @@ class SearchPage extends Component {
 
     }
 
+
     search = () => {
         API.search(this.state.searchQuery)
         .then(response => {this.setState({results:response.data.hits})})
@@ -44,23 +46,63 @@ class SearchPage extends Component {
 
     searchClick = e =>{
         e.preventDefault();
+        console.log(this.state.searchChip)
+
 
 
         this.setState(state => {
-            const searchChip2 = this.state.searchChip.concat(state.search);
+            const searchChip2 = this.state.searchChip.concat(state.search)
 
             return{
                 searchChip:searchChip2,
                 searchQuery:searchChip2.join("-"),
                 search: ""
-            };
+            }
 
 
         },  this.search ) 
 
         
     };
+    
 
+
+    deleteClick = e =>{
+        e.preventDefault ();
+        console.log(this.state.searchChip)
+        console.log(this.state.searchChip.filter(x => x !== "milk"))
+        console.log(e.target.getAttribute("data-name"))
+        let deletedChip = e.target.getAttribute("data-name")
+        const deleteChip = this.state.searchChip.filter( x => x !== deletedChip)
+        console.log(deleteChip)
+
+        this.setState ( {
+            search: "",
+            searchQuery: deleteChip.join("-"),
+             searchChip: deleteChip.join("-").split("-")  //this.state.searchChip.filter( (_ , i) => i === 0),
+        }, () => {
+
+       
+        console.log(this.state);
+        this.search()
+    })
+        //         searchChip:deleteChip,
+        //         searchQuery:deleteChip.join("-"),
+        //         search:""
+        // }, this.search  )
+    };
+
+ 
+//     handleDelete =  chipElement => {
+//         const deletedchips = this.state.searchChip.filter(chips => chips.name !== chipElement)
+//         this.setState({ searchQuery : deletedchips})
+
+    
+    
+
+//    this.search()
+
+    // };
  
     render() {
         return (
@@ -86,6 +128,7 @@ class SearchPage extends Component {
             
                     <Chips
                     chipsName = {this.state.searchChip}
+                    onClick = {this.deleteClick}
                      />
             
               <div className="row">
