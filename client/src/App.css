@@ -381,6 +381,15 @@ form  button[type=submit]{
   background-color: var(--claro);
   margin-top: 50px;
 }
+
+
+.btn[name=Delete]{
+  background-color: red;
+  border-radius: 8px;
+  display:block;
+  margin-top:10px;
+  
+}
 /* Make footer sticky*/
 
 

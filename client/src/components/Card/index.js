@@ -117,7 +117,7 @@ class Card extends React.Component {
                                 (this.props.path === "/")? 
                                 <button className="btn waves-effect waves-light" type="button" name="save" onClick={this.saveClick} disabled={this.state.saved}>{(this.state.saved) ? "Saved" :"Save"}</button> 
                                 :
-                                <button type="button"className="btn waves-effect waves-light danger"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
+                                <button type="button"className="btn waves-effect waves-light deleteButton"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
                                 
                         }
 
