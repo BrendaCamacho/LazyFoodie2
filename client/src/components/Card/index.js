@@ -29,7 +29,7 @@ class Card extends React.Component {
             calories: this.props.calories,
             yield: this.props.yield,
             url: this.props.url,
-            ingredientLines: this.props.ingredientLines
+            ingredientsLines: this.props.ingredientLines
         }
         e.preventDefault();
         API.saveRecipe(recipesData)
@@ -106,7 +106,7 @@ class Card extends React.Component {
                                 <li> {i} </li>
                                 )})
                            }
-                           
+
                         </ul>
                          
                         
@@ -114,7 +114,7 @@ class Card extends React.Component {
 
                         {
                                 // if this.props.path is "/" display save button else display Delete button
-                                (this.props.path == "/")? 
+                                (this.props.path === "/")? 
                                 <button className="btn waves-effect waves-light" type="button" name="save" onClick={this.saveClick} disabled={this.state.saved}>{(this.state.saved) ? "Saved" :"Save"}</button> 
                                 :
                                 <button type="button"className="btn waves-effect waves-light danger"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
