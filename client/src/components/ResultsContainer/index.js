@@ -21,6 +21,7 @@ function ResultsContainer (props){
                                 yield = {recipesInfo.yield}
                                 url = {recipesInfo.url}
                                 ingredientLines  = {recipesInfo.ingredientLines}
+                                path = {props.path}
                                 />
                             })}
         
@@ -45,12 +46,13 @@ function ResultsContainer (props){
                             calories = {recipe.calories}
                             yield = {recipe.yield}
                             url = {recipe.url}
-                            ingredientLines  = {recipe.ingredientsLines}
+                            ingredientLines = {recipe.ingredientsLines}
                             id = {recipe._id}
                             key = {recipe._id}
                             path = {props.path}
                             handleStateChange = {props.handleStateChange}
                             />
+                            
                         })}
                 </div>
         )
