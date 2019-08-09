@@ -50,10 +50,7 @@ class Card extends React.Component {
         .then(
             (response) =>  {
                 console.log(response);
-                //window.location.reload();
-
-            //function to reaload if not it's still there
-            
+                this.props.handleStateChange(this.props.id)
             }
         ).catch(
             (err) => {

@@ -7,8 +7,10 @@ class Saved extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            savedRecipes: []
+            savedRecipes: [],
+            deletedRecipe: []
         }
+        this.handleStateChange = this.handleStateChange.bind(this);
     }
 
     componentWillMount(){
@@ -24,6 +26,14 @@ class Saved extends React.Component {
         );
     }
 
+    handleStateChange(value){
+        let savedRecipes = this.state.savedRecipes;
+        const filteredArray = savedRecipes.filter((el)=>{
+            return el._id != value
+        })
+        this.setState({savedRecipes:filteredArray});
+    }
+
     render() {
         console.log(this.state.savedRecipes)
         return (
@@ -34,7 +44,7 @@ class Saved extends React.Component {
                 </div>
             </div>
                 <div className="row">
-                <ResultsContainer savedRecipes = {this.state.savedRecipes} path = {this.props.match.path}/>
+                <ResultsContainer handleStateChange = {this.handleStateChange} savedRecipes = {this.state.savedRecipes} path = {this.props.match.path}/>
                 </div>
             </div>
         )
