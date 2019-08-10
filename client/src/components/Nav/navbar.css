@@ -1,8 +1,7 @@
 li {
     display: inline;
+    font-weight: bold;
 }
 #register {
-    display: block;
-    background-color: #23D7A6;
-    color: black;
+    color: #23d7a6
 }
