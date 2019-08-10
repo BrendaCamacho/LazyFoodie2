@@ -7,10 +7,19 @@ const apiId = "&app_id=0e6aaabf";
 
 export default {
 
-search: (query) => {
-   
-     return axios.get(BASEURL + query + "&to=12&app_id=" + apiId + "&app_key=" + apiKey);
-     
+    search: (query) => {
+    
+        return axios.get(BASEURL + query + "&to=12&app_id=" + apiId + "&app_key=" + apiKey);
+        
+        },
+
+    saveRecipe: (recipesData) => {
+        
+        return axios.post("/api/recipes", recipesData);
+    },
+
+    getRecipes: () => {
+        return axios.get("/api/recipes");
     }
 }
 

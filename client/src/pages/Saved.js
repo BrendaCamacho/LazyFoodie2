@@ -1,12 +1,44 @@
-import React, { Component } from "react";
-import Saved from "../components/Saved";
+import React from "react";
+import ResultsContainer from "../components/ResultsContainer";
+import API from "../utils/API";
+import Logo from "../components/Logo";
 
-class SavedPage extends Component {
+class Saved extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            savedRecipes: []
+        }
+    }
+
+    componentWillMount(){
+        API.getRecipes().then(
+            (response) => {
+                this.setState({savedRecipes:response.data})
+                console.log(response);
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
     render() {
+        console.log(this.state.savedRecipes)
         return (
-            <Saved />
+            <div className="container">
+            <div className = "row">
+                <div className = "logodiv col s12 m4">
+                    <Logo/>
+                </div>
+            </div>
+                <div className="row">
+                <ResultsContainer savedRecipes = {this.state.savedRecipes} path = {this.props.match.path}/>
+                </div>
+            </div>
         )
     }
 }
 
-export default SavedPage;
+export default Saved;
