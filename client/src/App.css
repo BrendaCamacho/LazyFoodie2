@@ -31,6 +31,7 @@ html, body {
   margin: 0;
 }
 .container {
+  width:100%;
   min-height: 100%;
   margin-bottom: -30px;
 }
@@ -356,6 +357,39 @@ li {
   margin-top: 1em;
 }
 
+/*FORM STYLES*//*FORM STYLES*//*FORM STYLES*//*FORM STYLES*//*FORM STYLES*//*FORM STYLES*/
+
+.valign-wrapper{
+  min-height: 70vh;
+}
+
+.formLogin{
+  background-color:rgba(0,0,0,0.7);
+  padding: 25px 50px 50px 50px;
+  color: var(--amarillo);
+  border:1px solid var(--claro);
+  border-radius: 5px;
+  
+}
+
+.form-group label{
+  color: var(--claro);
+  letter-spacing: 0.5px;
+}
+
+form  button[type=submit]{
+  background-color: var(--claro);
+  margin-top: 50px;
+}
+
+
+.btn[name=Delete]{
+  background-color: red;
+  border-radius: 8px;
+  display:block;
+  margin-top:10px;
+  
+}
 /* Make footer sticky*/
 
 

@@ -29,15 +29,14 @@ class Card extends React.Component {
             calories: this.props.calories,
             yield: this.props.yield,
             url: this.props.url,
-
-            ingredientLines: this.props.ingredientLines
-
+            ingredientsLines: this.props.ingredientLines
         }
         e.preventDefault();
         API.saveRecipe(recipesData)
         .then(
             (response) => {
                 console.log(response)
+                console.log("SAVING" + recipesData.ingredientLines);
             }
         ).catch(
             (err) => {
@@ -51,10 +50,7 @@ class Card extends React.Component {
         .then(
             (response) =>  {
                 console.log(response);
-                //window.location.reload();
-
-            //function to reaload if not it's still there
-            
+                this.props.handleStateChange(this.props.id)
             }
         ).catch(
             (err) => {
@@ -110,6 +106,7 @@ class Card extends React.Component {
                                 <li> {i} </li>
                                 )})
                            }
+
                         </ul>
                          
                         
@@ -120,7 +117,7 @@ class Card extends React.Component {
                                 (this.props.path === "/")? 
                                 <button className="btn waves-effect waves-light" type="button" name="save" onClick={this.saveClick} disabled={this.state.saved}>{(this.state.saved) ? "Saved" :"Save"}</button> 
                                 :
-                                <button type="button"className="btn waves-effect waves-light danger"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
+                                <button type="button"className="btn waves-effect waves-light deleteButton"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
                                 
                         }
 

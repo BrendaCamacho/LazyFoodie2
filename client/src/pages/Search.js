@@ -77,9 +77,9 @@ class SearchPage extends Component {
         console.log(deleteChip)
 
         this.setState ( {
-            search: "",
+            //search: "",
             searchQuery: deleteChip.join("-"),
-             searchChip: deleteChip.join("-").split("-")  //this.state.searchChip.filter( (_ , i) => i === 0),
+            // searchChip: deleteChip.join("-").split("-")  //this.state.searchChip.filter( (_ , i) => i === 0),
         }, () => {
 
        
@@ -135,6 +135,7 @@ class SearchPage extends Component {
 
                     <ResultsContainer
                     recipesData = {this.state.results} path={this.props.match.path}/>
+                    
              </div>
 
             </div>
