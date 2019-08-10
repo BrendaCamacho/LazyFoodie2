@@ -74,10 +74,21 @@ class Card extends React.Component {
 
                         </div>
                         <div className="cardText">
-                            <p>
-                            {this.props.totalTime}
-                            <i className="material-icons left">timer</i>
-                            </p>
+                            {/* <p>
+                            {
+
+                            (this.props.path === "/saved")? 
+                            <button type="button"className="btn waves-effect waves-light danger"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete
+                             <i className="material-icons left">star_border</i>
+                            </button>
+
+                            :
+                            
+                            <button className="btn waves-effect waves-light" type="button" name="save" disabled={this.state.saved} onClick={this.saveClick}> Save</button> 
+                            }
+                            
+                            </p> */}
+
                         </div>
                         <div className="cardText">
                             <p>

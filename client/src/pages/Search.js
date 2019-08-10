@@ -13,7 +13,7 @@ class SearchPage extends Component {
     componentDidUpdate(){
     console.log("This chips", this.state.searchChip, "Join", this.state.searchQuery);
     console.log("results", this.state.results)
-    
+    console.log("newdeletedarray", this.state.deleteChip, "Join" , this.state.searchQuery)
 
     }
 
@@ -74,18 +74,25 @@ class SearchPage extends Component {
         console.log(e.target.getAttribute("data-name"))
         let deletedChip = e.target.getAttribute("data-name")
         const deleteChip = this.state.searchChip.filter( x => x !== deletedChip)
-        console.log(deleteChip)
+        console.log("esto es deleted chip", deletedChip)
+        console.log("deleteChip", deleteChip)
 
         this.setState ( {
-            //search: "",
+            // searchChip:deleteChip,
+
             searchQuery: deleteChip.join("-"),
-            // searchChip: deleteChip.join("-").split("-")  //this.state.searchChip.filter( (_ , i) => i === 0),
+
+            // searchQuery: deleteChip.join("-").split(), 
+            // search: "",
+          
+            //this.state.searchChip.filter( (_ , i) => i === 0),
         }, () => {
 
-       
+   
         console.log(this.state);
         this.search()
     })
+  
         //         searchChip:deleteChip,
         //         searchQuery:deleteChip.join("-"),
         //         search:""
