@@ -29,16 +29,14 @@ class Card extends React.Component {
             calories: this.props.calories,
             yield: this.props.yield,
             url: this.props.url,
-
-            ingredientLines: this.props.ingredientLines
-
+            ingredientsLines: this.props.ingredientLines
         }
         e.preventDefault();
-        console.log(recipesData);
         API.saveRecipe(recipesData)
         .then(
             (response) => {
                 console.log(response)
+                console.log("SAVING" + recipesData.ingredientLines);
             }
         ).catch(
             (err) => {
@@ -48,15 +46,11 @@ class Card extends React.Component {
     };
     deleteClick = function(e){
         this.setState({deleted: true});
-        e.preventDefault();
-        API.deleteRecipes(this.props.id)
+        API.deleteRecipe(this.props.id)
         .then(
             (response) =>  {
                 console.log(response);
-                window.location.reload();
-
-            //function to reaload if not it's still there
-            
+                this.props.handleStateChange(this.props.id)
             }
         ).catch(
             (err) => {
@@ -123,17 +117,20 @@ class Card extends React.Component {
                                 <li> {i} </li>
                                 )})
                            }
+
                         </ul>
                          
                         
                         <a className="waves-effect waves-light btn-small" href={this.props.url} target="_blank">Full Recipe<i className="material-icons right">add</i></a>
+
                         {
                                 // if this.props.path is "/" display save button else display Delete button
-                                (this.props.path === "/saved")? 
-                                <button type="button"className="btn waves-effect waves-light danger"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
+                                (this.props.path === "/")? 
+                                <button className="btn waves-effect waves-light" type="button" name="save" onClick={this.saveClick} disabled={this.state.saved}>{(this.state.saved) ? "Saved" :"Save"}</button> 
                                 :
-                                <button className="btn waves-effect waves-light" type="button" name="save" disabled={this.state.saved} onClick={this.saveClick}> Save</button> 
-                            }
+                                <button type="button"className="btn waves-effect waves-light deleteButton"  name="Delete" disabled={this.state.deleted} onClick={this.deleteClick}>Delete</button>
+                                
+                        }
 
                     </div>
                     </div>

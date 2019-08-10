@@ -16,9 +16,21 @@ module.exports = function(app){
     });
 
     app.get("/api/recipes", (req, res) => {
-        Recipe.find().then(
+        Recipe.find({}).sort({date:-1}).then(
         (recipesData) => {
             res.json(recipesData);
+            }
+        ).catch(
+            (err) => {
+                res.json({error:err});
+            }
+        );
+    });
+
+    app.delete("/api/recipes/:id", (req, res)=>{
+        Recipe.findByIdAndDelete(req.params.id).then(
+            (response) =>{
+                res.json({successful:response});
             }
         ).catch(
             (err) => {
