@@ -11,13 +11,13 @@ class Landing extends React.Component {
     render() {
         const loginRegLink = (
             <React.Fragment>
-                <li>
-                    <Link to="/login" className="nav-link">
+                <li className="tab">
+                    <Link to="/login">
                         Login
                     </Link>
                 </li>
-                <li>
-                    <Link to="/register" className="nav-link" id="register">
+                <li className="tab">
+                    <Link to="/register" id="register">
                         Register
                     </Link>
                 </li>
@@ -26,7 +26,7 @@ class Landing extends React.Component {
         )
         const userLink = (
             <React.Fragment>
-                <li>
+                <li className="tab">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">
                         Logout
                     </a>
@@ -34,15 +34,15 @@ class Landing extends React.Component {
             </React.Fragment>
         )
         return (
-            <nav>
-                <ul className="right">
-                    <li>
-                        <Link to="/" className="nav-link">
+            <nav className="nav-content">
+                <ul className="tabs tabs-transparent">
+                    <li className="tab">
+                        <Link to="/">
                             Search
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/saved" className="nav-link">
+                    <li className="tab">
+                        <Link to="/saved">
                             Saved
                         </Link>
                     </li>
