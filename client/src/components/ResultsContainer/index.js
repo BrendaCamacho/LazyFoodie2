@@ -6,10 +6,10 @@ function ResultsContainer (props){
 
     if(props.path === "/"){
                 {/* Abre if de results > 0*/}    
-                if(props.recipesData.length > 0){
+                if(props.recipesData.length > 1){
 
                     return (
-                        <div class="recipesContainer col s12">
+                        <div className="recipesContainer col s12">
         
                             {props.recipesData.map((results) => {
                                 const recipesInfo  = results.recipe
@@ -29,11 +29,16 @@ function ResultsContainer (props){
         
                     );
                 {/* Cierra if de results > 0 */}    
-                }else{
+                }if (props.recipesData === false ){
                     return(
-                        <div></div>
+                        <div className="no-results">
+                            <p>Sorry, no results available for this query. Try again</p>
+                            <i className="material-icons sad-face">sentiment_very_dissatisfied</i>
+                        </div>
                     )
-                } {/* Cierra else de if results >0 */}
+                }
+                        
+                // } {/* Cierra else de if results >0 */}
     }else if(props.path === "/saved"){
         return(
             <div class="recipesContainer col s12">
