@@ -3,6 +3,8 @@ const users = express.Router()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+require('dotenv').config()
+
 
 const User = require('../models/User')
 users.use(cors())
@@ -58,6 +60,7 @@ users.post('/login', (req, res) => {
             last_name: user.last_name,
             email: user.email
           }
+          console.log(process.env.SECRET_KEY);
           let token = jwt.sign(payload, process.env.SECRET_KEY, {
             //expiresIn: 1440
           })
@@ -94,4 +97,19 @@ users.get('/profile', (req, res) => {
     })
 })
 
+
+users.get("/users", (req,res)=>{
+  console.log("api users hit")
+  console.log("USER" + User)
+  User.find({}).then(
+    (user) => {
+      console.log("USER" + user)
+      res.json(user);
+    }
+  ).catch(
+    (err) => {
+      res.json({error:err});
+    }
+  )
+})
 module.exports = users

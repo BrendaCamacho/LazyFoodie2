@@ -24,7 +24,14 @@ export default {
 
     deleteRecipe:(id) =>{
         return axios.delete("/api/recipes/" + id);
+    },
+
+    getUser:() => {
+        return axios.get("/users")
     }
+
+
+
 }
 
 

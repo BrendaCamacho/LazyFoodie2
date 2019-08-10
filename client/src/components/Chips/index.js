@@ -18,23 +18,13 @@ class Chips extends Component {
                             <i className="close material-icons" data-name={searchChip} onClick= {this.props.onClick}>close  </i> 
                             </div>
                
-<<<<<<< HEAD
-                )})
-                }
-=======
          )})
 
 
     }
 
          </div>
-                
 
-
-        
->>>>>>> d462ab23082ea89b9f3794fbf22842aa20fe57af
-
-            </div>
         )
 
    }
