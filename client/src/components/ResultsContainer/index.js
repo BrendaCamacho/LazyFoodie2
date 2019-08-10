@@ -31,7 +31,8 @@ function ResultsContainer (props){
                 {/* Cierra if de results > 0 */}    
                 }else{
                     return(
-                        <div></div>
+                        <div>
+                        </div>
                     )
                 } {/* Cierra else de if results >0 */}
     }else if(props.path === "/saved"){

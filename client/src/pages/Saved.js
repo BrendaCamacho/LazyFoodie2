@@ -8,12 +8,16 @@ class Saved extends React.Component {
         super(props);
         this.state = {
             savedRecipes: [],
-            deletedRecipe: []
+            deletedRecipe: [],
+            loggedIn: false
         }
         this.handleStateChange = this.handleStateChange.bind(this);
     }
 
     componentWillMount(){
+        if(localStorage.getItem("usertoken")){
+            this.setState({loggedIn:true});
+        }
         API.getRecipes().then(
             (response) => {
                 this.setState({savedRecipes:response.data})
@@ -37,16 +41,20 @@ class Saved extends React.Component {
     render() {
         console.log(this.state.savedRecipes)
         return (
+     
+            
             <div className="container">
             <div className = "row">
                 <div className = "logodiv col s12 m4">
                     <Logo/>
                 </div>
             </div>
+            {
+                (this.state.loggedIn) ? 
                 <div className="row">
                 <ResultsContainer handleStateChange = {this.handleStateChange} savedRecipes = {this.state.savedRecipes} path = {this.props.match.path}/>
-                </div>
-            </div>
+                </div>:""} 
+            </div> 
         )
     }
 }
