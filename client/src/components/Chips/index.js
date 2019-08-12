@@ -21,6 +21,8 @@ class Chips extends Component {
                 )})
                 }
 
+
+
             </div>
         )
 
