@@ -45,23 +45,19 @@ class SearchPage extends Component {
 
 
     searchClick = e =>{
+     
+        
         e.preventDefault();
         console.log(this.state.searchChip)
-
-
-
+      
         this.setState(state => {
             const searchChip2 = this.state.searchChip.concat(state.search)
-
             return{
                 searchChip:searchChip2,
                 searchQuery:searchChip2.join("-"),
                 search: ""
             }
-
-
         },  this.search ) 
-
         
     };
     
@@ -79,12 +75,9 @@ class SearchPage extends Component {
 
         this.setState ( {
             // searchChip:deleteChip,
-
             searchQuery: deleteChip.join("-"),
-
             // searchQuery: deleteChip.join("-").split(), 
             // search: "",
-          
             //this.state.searchChip.filter( (_ , i) => i === 0),
         }, () => {
 
@@ -113,22 +106,21 @@ class SearchPage extends Component {
  
     render() {
         return (
-
             <div className="container">
             <div className="row">
-                   <div className="logodiv col s12 m4">
+                   <div className="logo col s12 m4">
                        <Logo />
-                    </div>
+            </div>
             </div>
              <div className="row formContainer">
-             <div className="input-field col m8 l6 offset-m2 offset-l3">
+             <form className="col s12 m8 l6">
 
             <SearchInput 
             value={this.state.search}
             onChange={this.onChange} 
             onClick={this.searchClick}/>
                 
-            </div>
+            </form>
             </div>
 
 
@@ -144,8 +136,9 @@ class SearchPage extends Component {
                     recipesData = {this.state.results} path={this.props.match.path}/>
                     
              </div>
+             </div>
 
-            </div>
+
             
 
 

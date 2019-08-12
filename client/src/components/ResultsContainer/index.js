@@ -1,40 +1,47 @@
 
 import React from "react";
 import Card from "../Card";
+// import NoResults from "../NoResults";
+
 
 function ResultsContainer (props){
-
+    
     if(props.path === "/"){
-                {/* Abre if de results > 0*/}    
-                if(props.recipesData.length > 0){
+        if(props.recipesData.length > 1) {
 
-                    return (
-                        <div class="recipesContainer col s12">
+
+                        return(
+                        <div className="recipesContainer col s12">
         
                             {props.recipesData.map((results) => {
-                                const recipesInfo  = results.recipe
-                                return <Card 
-                                image = {recipesInfo.image}
-                                label = {recipesInfo.label}
-                                totalTime =  {recipesInfo.totalTime}
-                                calories = {recipesInfo.calories}
-                                yield = {recipesInfo.yield}
-                                url = {recipesInfo.url}
-                                path = {props.path}
-                                ingredientLines  = {recipesInfo.ingredientLines}
-                                />
+                                 const recipesInfo  = results.recipe
+
+
+                                    return <Card 
+                                            image = {recipesInfo.image}
+                                            label = {recipesInfo.label}
+                                            totalTime =  {recipesInfo.totalTime}
+                                            calories = {recipesInfo.calories}
+                                            yield = {recipesInfo.yield}
+                                            url = {recipesInfo.url}
+                                            path = {props.path}
+                                            ingredientLines  = {recipesInfo.ingredientLines}
+                                            />
                             })}
-        
+                       </div>
+                       )
+
+
+         }else if (props.recipesData.length == 0 && props.recipesData == false) {
+                         return(
+                         <div className="no-results">
+                                 <p>Sorry, no results available for this query. Try again</p>
+                                 <i className="material-icons sad-face">sentiment_very_dissatisfied</i>
                         </div>
-        
-                    );
-                {/* Cierra if de results > 0 */}    
-                }else{
-                    return(
-                        <div>
-                        </div>
-                    )
-                } {/* Cierra else de if results >0 */}
+                                )
+                                            
+          }
+                        
     }else if(props.path === "/saved"){
         return(
             <div class="recipesContainer col s12">
@@ -55,12 +62,12 @@ function ResultsContainer (props){
                             />
                             
                         })}
-                </div>
+            </div>
         )
     }
 
+}  
 
 
-}
 
 export default ResultsContainer;
