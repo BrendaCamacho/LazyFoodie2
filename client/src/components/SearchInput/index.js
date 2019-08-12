@@ -4,16 +4,16 @@ import React from "react";
 function SearchInput(props){
 
     return(
+        <div className="input-field col m8 l6 offset-m2 offset-l3">
 
-            <form className="col s12 m8 l6">
-            <label id="labelAdd" className="active" for="ingredients">I have this ingredient what can I cook?</label>
-            <input id="ingredients" type="text" className="validate childflexInput" required     
+            <label id="labelAdd" className="active" className="ingredients">I have this ingredient what can I cook?</label>
+            <input id="ingredients" type="text" className="validate childflexInput"  required=""  aria-required="true"     
                 onChange={props.onChange}
                 value={props.value}
                 name="search" 
                 type="text" 
                 className="validate center-align"
-                id="searchinput"
+                id="ingredients"
 
             />
 
@@ -31,7 +31,7 @@ function SearchInput(props){
    
            
            
-             </form>
+             </div>
 
 
     );

@@ -45,7 +45,7 @@ class Saved extends React.Component {
             
             <div className="container">
             <div className = "row">
-                <div className = "logodiv col s12 m4">
+                <div className = "logo col s12 m4">
                     <Logo/>
                 </div>
             </div>

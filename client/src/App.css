@@ -42,7 +42,7 @@ html, body {
 }
 
 #logo{
-  margin:1em auto 2em 25em;
+  margin:6em auto 2em 12em;
   width:25%;
 }
 
@@ -58,7 +58,6 @@ input{
   justify-content: center;
   flex-flow: row wrap;
   margin-bottom: 1em;
-  margin-right: 5em;
 } 
 
 
@@ -93,7 +92,6 @@ height: 30px;
 line-height: 30px;
 padding:0 6px;
 text-transform: none;
-margin-left: 20em;
 margin-top: 1em;
 }
 
@@ -400,8 +398,9 @@ form  button[type=submit]{
       background-image: url(../src/img/mobile-back.jpg);
   }
   #logo{
-      margin:3em auto;
-      width:40%;
+      margin:auto 6em;
+      width:300%;
+      align-items: center
   }
   .container{
       width:100%;
