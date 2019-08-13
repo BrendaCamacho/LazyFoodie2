@@ -44,24 +44,33 @@ class SearchPage extends Component {
     }
 
 
+
     searchClick = e =>{
      
         
         e.preventDefault();
-        console.log(this.state.searchChip)
-      
+        console.log("searchClick")
+        console.log(this.state)
+
+        if(this.state.search.length === 0)
+            return 
+
         this.setState(state => {
             const searchChip2 = this.state.searchChip.concat(state.search)
+            console.log(searchChip2)
             return{
                 searchChip:searchChip2,
                 searchQuery:searchChip2.join("-"),
-                search: ""
+                search: "",
+                searched: true
             }
         },  this.search ) 
         
     };
     
 
+    
+      
 
     deleteClick = e =>{
         e.preventDefault ();
