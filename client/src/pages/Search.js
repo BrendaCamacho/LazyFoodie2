@@ -13,7 +13,7 @@ class SearchPage extends Component {
     componentDidUpdate(){
     console.log("This chips", this.state.searchChip, "Join", this.state.searchQuery);
     console.log("results", this.state.results)
-    console.log("newdeletedarray", this.state.deleteChip, "Join" , this.state.searchQuery)
+    //console.log("newdeletedarray", this.state.deleteChip, "Join" , this.state.searchQuery)
 
     }
 
@@ -23,6 +23,7 @@ class SearchPage extends Component {
         searchQuery:"",
         deleteChip: "",
         searchChip: [],
+        searched: "",
     };
   
     
@@ -32,12 +33,15 @@ class SearchPage extends Component {
         this.setState({
             [name]:value
         });
-        console.log(this.state.search);
+        console.log("onChange", this.state.search);
 
     }
 
 
     search = () => {
+
+        console.log("search")
+        console.log(this.state.searchQuery)
         API.search(this.state.searchQuery)
         .then(response => {this.setState({results:response.data.hits})})
         .catch(err=> console.log(err));
@@ -48,14 +52,20 @@ class SearchPage extends Component {
      
         
         e.preventDefault();
-        console.log(this.state.searchChip)
-      
+        console.log("searchClick")
+        console.log(this.state)
+
+        if(this.state.search.length === 0)
+            return 
+
         this.setState(state => {
             const searchChip2 = this.state.searchChip.concat(state.search)
+            console.log(searchChip2)
             return{
                 searchChip:searchChip2,
                 searchQuery:searchChip2.join("-"),
-                search: ""
+                search: "",
+                searched: true
             }
         },  this.search ) 
         
@@ -65,44 +75,41 @@ class SearchPage extends Component {
 
     deleteClick = e =>{
         e.preventDefault ();
-        console.log(this.state.searchChip)
-        console.log(this.state.searchChip.filter(x => x !== "milk"))
-        console.log(e.target.getAttribute("data-name"))
-        let deletedChip = e.target.getAttribute("data-name")
-        const deleteChip = this.state.searchChip.filter( x => x !== deletedChip)
-        console.log("esto es deleted chip", deletedChip)
-        console.log("deleteChip", deleteChip)
+        //console.log("searchQuery antes de setState", this.state.searchQuery)
+        //console.log(this.state.searchChip.filter(x => x !== e.target.getAttribute("data-name")))
+        //console.log("target", e.target.getAttribute("data-name"))
+        console.log("deleteClick")
+        console.log(this.state)
 
-        this.setState ( {
+        // if (this.state.search.length === 0) {
+        //     return(this.state.searched === false)
+            
+        // } 
+        const deletedChip = e.target.getAttribute("data-name")
+        console.log("esto queremos borrar", deletedChip)
+        this.setState ( state => {
             // searchChip:deleteChip,
-            searchQuery: deleteChip.join("-"),
+
+         
+            console.log('data-target:', deletedChip)
+            console.log('state', state)
+            const deleteChip = state.searchChip.filter( x => x !== deletedChip)
+            console.log("deleteChip: ", deleteChip)
+            const deleteChipJoin = deleteChip.join("-")
+            console.log("deleteChipJoin", deleteChipJoin)
+            
+            return  {  
+                searchQuery: deleteChipJoin,
+                searchChip: deleteChip
+            }
             // searchQuery: deleteChip.join("-").split(), 
             // search: "",
             //this.state.searchChip.filter( (_ , i) => i === 0),
-        }, () => {
+            }, 
+            this.search )
 
-   
-        console.log(this.state);
-        this.search()
-    })
-  
-        //         searchChip:deleteChip,
-        //         searchQuery:deleteChip.join("-"),
-        //         search:""
-        // }, this.search  )
     };
 
- 
-//     handleDelete =  chipElement => {
-//         const deletedchips = this.state.searchChip.filter(chips => chips.name !== chipElement)
-//         this.setState({ searchQuery : deletedchips})
-
-    
-    
-
-//    this.search()
-
-    // };
  
     render() {
         return (
@@ -133,7 +140,7 @@ class SearchPage extends Component {
               <div className="row">
 
                     <ResultsContainer
-                    recipesData = {this.state.results} path={this.props.match.path}/>
+                    recipesData = {this.state.results} path={this.props.match.path} searched = {this.state.searched}/>
                     
              </div>
              </div>
