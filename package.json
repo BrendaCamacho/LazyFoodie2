@@ -40,7 +40,7 @@
   "private": true,
   "engines": {
     "npm": "6.10.0",
-    "node": "10.16.0re"
+    "node": "10.16.0"
   },
   "dependencies2": {
     "react": "^16.2.0",
