@@ -8,7 +8,7 @@ const apiId = "&app_id=0e6aaabf";
 export default {
 
     search: (query) => {
-    
+        //if (query == ""){console.log("turkeys");query = "turkey"}
         return axios.get(BASEURL + query + "&to=12&app_id=" + apiId + "&app_key=" + apiKey);
         
         },

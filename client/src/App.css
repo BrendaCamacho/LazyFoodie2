@@ -42,7 +42,8 @@ html, body {
 }
 
 #logo{
-  margin:6em auto 2em 13em;
+  margin:3em auto;
+
   width:25%;
 }
 
@@ -398,10 +399,9 @@ form  button[type=submit]{
       background-image: url(../src/img/mobile-back.jpg);
   }
   #logo{
-      margin:auto 6em;
-      width:300%;
-      align-items: center
-  }
+    margin:3em auto;
+    width:40%;
+}
   .container{
       width:100%;
       padding-right: 10px;

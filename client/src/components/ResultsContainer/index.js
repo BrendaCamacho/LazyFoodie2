@@ -5,9 +5,9 @@ import Card from "../Card";
 
 
 function ResultsContainer (props){
-    
+    //console.log(props.recipesData.searched)
     if(props.path === "/"){
-        if(props.recipesData.length > 1) {
+        if(props.recipesData.length > 0) {
 
 
                         return(
@@ -32,7 +32,7 @@ function ResultsContainer (props){
                        )
 
 
-         }else if (props.recipesData.length == 0 && props.recipesData == false) {
+         }else if (props.recipesData.length == 0 && props.searched === true) {
                          return(
                          <div className="no-results">
                                  <p>Sorry, no results available for this query. Try again</p>
@@ -40,6 +40,9 @@ function ResultsContainer (props){
                         </div>
                                 )
                                             
+          }
+          else {
+              return(<div> </div>)
           }
                         
     }else if(props.path === "/saved"){

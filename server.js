@@ -14,15 +14,17 @@ app.use(
   })
 )
 
-const mongoURI = 'mongodb://localhost:27017/mernloginreg'
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:user123@ds117605.mlab.com:17605/heroku_z55rbzzx")
 
-mongoose
-  .connect(
-    mongoURI,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err))
+// const mongoURI = 'mongodb://brenda:brenda123@ds117605.mlab.com:17605/heroku_z55rbzzx'
+
+// mongoose
+//   .connect(process.env.MONGODB_URI ||
+//     mongoURI,
+//     { useMongoClient: true }
+//   )
+//   .then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log(err))
 
 var Users = require('./routes/Users')
 
