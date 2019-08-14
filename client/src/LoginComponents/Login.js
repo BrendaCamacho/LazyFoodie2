@@ -10,7 +10,8 @@ class Login extends Component {
       email: '',
       password: '',
       token:'',
-      errors: {}
+      errors: {},
+      userId:""
     }
 
     this.onChange = this.onChange.bind(this)
@@ -31,13 +32,9 @@ class Login extends Component {
     login(user).then(res => {
       if (res) {
         this.setState({token: res})
-        getProfile(this.state.token).then(res => {
-          console.log(res)
-        })
-        console.log("RES" + res)
-        console.log("STATE" + this.state.token)
         this.props.history.push(`/`)
       }
+
     })
   }
 
@@ -76,7 +73,7 @@ class Login extends Component {
               >
                 Sign in
               </button>
-              <Saved  token={this.state.token}/>
+              <Saved  token={this.state.token}  userId = {this.state.userId}/>
             </form>
           </div>
         </div>

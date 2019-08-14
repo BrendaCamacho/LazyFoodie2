@@ -5,6 +5,7 @@ import API from "../utils/API.js";
 import Chips from "../components/Chips"
 import Logo from "../components/Logo"
 import ResultsContainer from "../components/ResultsContainer"
+import {getProfile} from "../LoginComponents/UserFunctions"
 
 
 
@@ -23,6 +24,7 @@ class SearchPage extends Component {
         searchQuery:"",
         deleteChip: "",
         searchChip: [],
+        userId:""
     };
   
     
@@ -41,6 +43,8 @@ class SearchPage extends Component {
         API.search(this.state.searchQuery)
         .then(response => {this.setState({results:response.data.hits})})
         .catch(err=> console.log(err));
+
+
     }
 
 
@@ -48,6 +52,10 @@ class SearchPage extends Component {
         e.preventDefault();
         console.log(this.state.searchChip)
 
+        let usertoken = localStorage.getItem("usertoken");
+        getProfile(usertoken).then(res => {
+        this.setState({userId : res._id});
+        })   
 
 
         this.setState(state => {
@@ -141,7 +149,7 @@ class SearchPage extends Component {
               <div className="row">
 
                     <ResultsContainer
-                    recipesData = {this.state.results} path={this.props.match.path}/>
+                    userId = {this.state.userId} recipesData = {this.state.results} path={this.props.match.path}/>
                     
              </div>
 

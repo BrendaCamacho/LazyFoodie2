@@ -22,6 +22,10 @@ export default {
         return axios.get("/api/recipes");
     },
 
+    getRecipesByUser: (id) => {
+        return axios.get("/api/recipes/user/" + id);
+    },
+
     deleteRecipe:(id) =>{
         return axios.delete("/api/recipes/" + id);
     },

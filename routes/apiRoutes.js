@@ -27,10 +27,9 @@ module.exports = function(app){
             }
         );
     });
-    //user find one id: _id . populate recipes .then ()
-    
-    app.get("/api/user/recipes", (req, res) => {
-        User.find({id:_id}).sort({date:-1}).then(
+
+    app.get("/api/recipes/user/:id", (req, res) => {
+        Recipe.find({userId:req.params.id}).sort({date:-1}).then(
         (recipesData) => {
             res.json(recipesData);
             }
@@ -40,6 +39,19 @@ module.exports = function(app){
             }
         );
     });
+    //user find one id: _id . populate recipes .then ()
+
+/*     app.get("/api/recipes", (req, res) => {
+        Recipe.find({}).sort({date:-1}).then(
+        (recipesData) => {
+            res.json(recipesData);
+            }
+        ).catch(
+            (err) => {
+                res.json({error:err});
+            }
+        );
+    }); */
 
     app.delete("/api/recipes/:id", (req, res)=>{
         Recipe.findByIdAndDelete(req.params.id).then(

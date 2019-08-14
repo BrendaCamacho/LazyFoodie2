@@ -1,6 +1,6 @@
 import React from "react";
-import API from "../../utils/API"
-// import { Link } from "react-router-dom";
+import API from "../../utils/API";
+import {getProfile} from "../../LoginComponents/UserFunctions";
 
 require("../..//App.css")
 
@@ -12,7 +12,7 @@ class Card extends React.Component {
         this.state = {
             saved: false,
             deleted:false,
-            results: []
+            results: [],
          }
 
          this.saveClick = this.saveClick.bind(this);
@@ -22,8 +22,14 @@ class Card extends React.Component {
 
      saveClick = function(e){
         this.setState({saved:true});
+
         let usertoken = localStorage.getItem("usertoken");
-        const recipesData = {
+        getProfile(usertoken).then(res => {
+        this.setState({userId : res._id});
+        })
+ 
+        const recipesData = {            
+            userId: this.props.userId,
             image: this.props.image,
             label: this.props.label,
             totalTime: this.props.totalTime,
@@ -31,14 +37,13 @@ class Card extends React.Component {
             yield: this.props.yield,
             url: this.props.url,
             ingredientsLines: this.props.ingredientLines
-            
         }
+        
         e.preventDefault();
         API.saveRecipe(recipesData)
         .then(
             (response) => {
-                console.log(response)
-                console.log("SAVING" + recipesData.ingredientLines);
+                console.log("CARD - USERID " + this.state.userId);
             }
         ).catch(
             (err) => {

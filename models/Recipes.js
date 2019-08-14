@@ -9,6 +9,7 @@ const RecipeSchema = new Schema ({
     calories:Number,
     yield:String,
     url: String,
+    userId: String,
     ingredientsLines:[String],
     date :{
         type: Date,

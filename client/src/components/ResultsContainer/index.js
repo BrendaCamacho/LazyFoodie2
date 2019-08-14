@@ -14,6 +14,7 @@ function ResultsContainer (props){
                             {props.recipesData.map((results) => {
                                 const recipesInfo  = results.recipe
                                 return <Card 
+                                userId = {props.userId}
                                 image = {recipesInfo.image}
                                 label = {recipesInfo.label}
                                 totalTime =  {recipesInfo.totalTime}
@@ -41,6 +42,7 @@ function ResultsContainer (props){
                 
                         {props.savedRecipes.map((recipe) => {
                             return <Card 
+                            userId = {recipe.userId}
                             image = {recipe.image}
                             label = {recipe.label}
                             totalTime =  {recipe.totalTime}

@@ -11,22 +11,26 @@ class Saved extends React.Component {
             savedRecipes: [],
             deletedRecipe: [],
             loggedIn: false,
+            userId:""
 
         }
         this.handleStateChange = this.handleStateChange.bind(this);
     }
 
     componentWillMount(){
-        var userId = "";
+        let userId = "5d4ef4861a65ff416492d927";
+
         if(localStorage.getItem("usertoken")){
-        var usertoken = localStorage.getItem("usertoken");
-        getProfile(usertoken).then(res => {
-            userId = res._id;
-        })
-        console.log("UUUSER TOKEEN " + usertoken);
-            this.setState({loggedIn:true});
+        let usertoken = localStorage.getItem("usertoken");
+         getProfile(usertoken).then(res => {
+        userId = res._id
+        console.log(userId);
+        })    
+
+        this.setState({loggedIn:true});
         }
-        API.getRecipes().then(
+
+        API.getRecipesByUser(userId).then(
             (response) => {
                 this.setState({savedRecipes:response.data})
                 console.log(response);
