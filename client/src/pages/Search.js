@@ -48,6 +48,7 @@ class SearchPage extends Component {
     }
 
 
+
     searchClick = e =>{
      
         
@@ -72,6 +73,8 @@ class SearchPage extends Component {
     };
     
 
+    
+      
 
     deleteClick = e =>{
         e.preventDefault ();
@@ -100,7 +103,7 @@ class SearchPage extends Component {
             
             return  {  
                 searchQuery: deleteChipJoin,
-                searchChip: deleteChip
+                // searchChip: deleteChip
             }
             // searchQuery: deleteChip.join("-").split(), 
             // search: "",
