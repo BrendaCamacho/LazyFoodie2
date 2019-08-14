@@ -103,7 +103,7 @@ class SearchPage extends Component {
             
             return  {  
                 searchQuery: deleteChipJoin,
-                searchChip: deleteChip
+                // searchChip: deleteChip
             }
             // searchQuery: deleteChip.join("-").split(), 
             // search: "",
