@@ -13,11 +13,7 @@ const RecipeSchema = new Schema ({
     date :{
         type: Date,
         default: Date.now
-    },
-    userID: {
-        type:Schema.Types.ObjectId,
-        ref:"User"
     }
-})
+});
 
 module.exports = Recipe = mongoose.model('recipes', RecipeSchema)

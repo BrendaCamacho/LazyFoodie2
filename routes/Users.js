@@ -4,6 +4,7 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
+const jwtMiddleware = require('express-jwt')
 
 
 const User = require('../models/User')
@@ -64,7 +65,8 @@ users.post('/login', (req, res) => {
           let token = jwt.sign(payload, process.env.SECRET_KEY, {
             //expiresIn: 1440
           })
-          res.send(token)
+          console.log("TOKEN" + token);
+          res.status(200).json(token);
         } else {
           // Passwords don't match
           res.json({ error: 'User does not exist' })
@@ -81,8 +83,9 @@ users.post('/login', (req, res) => {
 users.get('/profile', (req, res) => {
   console.log("Profile Hit")
   var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-
-  User.findOne({
+  res.status(200).json(decoded)
+  console.log(decoded);
+/*   User.findOne({
     _id: decoded._id
   })
     .then(user => {
@@ -94,9 +97,13 @@ users.get('/profile', (req, res) => {
     })
     .catch(err => {
       res.send('error: ' + err)
-    })
+    }) */
 })
 
+
+users.get("/id", (req, res)=> {
+res.send("HOLA");
+});
 
 users.get("/users", (req,res)=>{
   console.log("api users hit")
@@ -111,5 +118,6 @@ users.get("/users", (req,res)=>{
       res.json({error:err});
     }
   )
-})
+});
+
 module.exports = users

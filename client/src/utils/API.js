@@ -28,7 +28,18 @@ export default {
 
     getUser:() => {
         return axios.get("/users")
+    },
+
+
+    getProfile:(token) => {
+        return axios.get("/profile", 
+        {
+            headers: {
+                "Authorization":token}
+        })
     }
+
+
 
 
 

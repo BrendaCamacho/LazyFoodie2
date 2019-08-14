@@ -14,7 +14,7 @@ export const register = newUser => {
 }
 
 export const login = user => {
-  console.log(user);
+  //console.log(user);
   return axios
     .post('users/login', {
       email: user.email,
@@ -29,13 +29,13 @@ export const login = user => {
     })
 }
 
-export const getProfile = user => {
+export const getProfile = token => {
   return axios
     .get('users/profile', {
-      //headers: { Authorization: ` ${this.getToken()}` }
+      headers: {"Authorization": token }
     })
     .then(response => {
-      console.log(response)
+      //console.log(response)
       return response.data
     })
     .catch(err => {

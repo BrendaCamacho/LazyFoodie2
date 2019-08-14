@@ -22,6 +22,7 @@ class Card extends React.Component {
 
      saveClick = function(e){
         this.setState({saved:true});
+        let usertoken = localStorage.getItem("usertoken");
         const recipesData = {
             image: this.props.image,
             label: this.props.label,
@@ -30,6 +31,7 @@ class Card extends React.Component {
             yield: this.props.yield,
             url: this.props.url,
             ingredientsLines: this.props.ingredientLines
+            
         }
         e.preventDefault();
         API.saveRecipe(recipesData)

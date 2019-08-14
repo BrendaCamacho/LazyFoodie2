@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { login } from './UserFunctions'
+import { login, getProfile } from './UserFunctions'
+import API from "../utils/API";
+import Saved from "../pages/Saved";
 
 class Login extends Component {
   constructor() {
@@ -7,6 +9,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      token:'',
       errors: {}
     }
 
@@ -27,6 +30,12 @@ class Login extends Component {
 
     login(user).then(res => {
       if (res) {
+        this.setState({token: res})
+        getProfile(this.state.token).then(res => {
+          console.log(res)
+        })
+        console.log("RES" + res)
+        console.log("STATE" + this.state.token)
         this.props.history.push(`/`)
       }
     })
@@ -67,6 +76,7 @@ class Login extends Component {
               >
                 Sign in
               </button>
+              <Saved  token={this.state.token}/>
             </form>
           </div>
         </div>

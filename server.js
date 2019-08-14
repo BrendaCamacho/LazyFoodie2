@@ -6,6 +6,13 @@ var cors = require('cors')
 var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+//TEST//
+const cookieParser = require('cookie-parser')
+const jwtMiddleware = require('express-jwt')
+require('dotenv').config()
+//TEST//
+
+
 app.use(bodyParser.json())
 app.use(cors())
 app.use(
@@ -13,6 +20,13 @@ app.use(
     extended: false
   })
 )
+
+///////////////////////////////////////////////
+////TESTING////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////
 
 const mongoURI = 'mongodb://localhost:27017/mernloginreg'
 

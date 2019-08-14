@@ -2,6 +2,7 @@ import React from "react";
 import ResultsContainer from "../components/ResultsContainer";
 import API from "../utils/API";
 import Logo from "../components/Logo";
+import {getProfile} from "../LoginComponents/UserFunctions"
 
 class Saved extends React.Component {
     constructor(props) {
@@ -9,13 +10,20 @@ class Saved extends React.Component {
         this.state = {
             savedRecipes: [],
             deletedRecipe: [],
-            loggedIn: false
+            loggedIn: false,
+
         }
         this.handleStateChange = this.handleStateChange.bind(this);
     }
 
     componentWillMount(){
+        var userId = "";
         if(localStorage.getItem("usertoken")){
+        var usertoken = localStorage.getItem("usertoken");
+        getProfile(usertoken).then(res => {
+            userId = res._id;
+        })
+        console.log("UUUSER TOKEEN " + usertoken);
             this.setState({loggedIn:true});
         }
         API.getRecipes().then(
@@ -32,6 +40,7 @@ class Saved extends React.Component {
 
     handleStateChange(value){
         let savedRecipes = this.state.savedRecipes;
+        console.log("Aqui" + this.props)
         const filteredArray = savedRecipes.filter((el)=>{
             return el._id != value
         })

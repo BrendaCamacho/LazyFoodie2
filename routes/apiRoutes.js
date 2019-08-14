@@ -1,5 +1,6 @@
 const axios = require("axios");
 const Recipe = require("../models/Recipes");
+const User = require("../models/User");
 const path = require("path");
 
 module.exports = function(app){
@@ -17,6 +18,19 @@ module.exports = function(app){
 
     app.get("/api/recipes", (req, res) => {
         Recipe.find({}).sort({date:-1}).then(
+        (recipesData) => {
+            res.json(recipesData);
+            }
+        ).catch(
+            (err) => {
+                res.json({error:err});
+            }
+        );
+    });
+    //user find one id: _id . populate recipes .then ()
+    
+    app.get("/api/user/recipes", (req, res) => {
+        User.find({id:_id}).sort({date:-1}).then(
         (recipesData) => {
             res.json(recipesData);
             }
