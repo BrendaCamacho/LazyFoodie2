@@ -4,10 +4,11 @@ import React from "react";
 function SearchInput(props){
 
     return(
+
         <div className="input-field col m8 l6 offset-m2 offset-l3">
 
-            <label id="labelAdd" className="active" className="ingredients">I have this ingredient what can I cook?</label>
-            <input id="ingredients" type="text" className="validate childflexInput"  required=""  aria-required="true"     
+
+            <input id="ingredients" type="text" className="childflexInput" required   
                 onChange={props.onChange}
                 value={props.value}
                 name="search" 
@@ -16,6 +17,9 @@ function SearchInput(props){
                 id="ingredients"
 
             />
+            <label id="labelAdd" className="active" className="ingredients" for="ingredients">I have this ingredient what can I cook?</label>
+
+
 
             <button 
             onClick= {props.onClick}
